@@ -1,0 +1,40 @@
+.text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navigation-button {
+  height: 200px;
+  width: 200px;
+}
+
+#button-text {
+  position: fixed;
+  bottom: 0;
+}
+
+.navigation-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  margin: 10px 50px 10px 50px;
+}
+
+.button-text {
+  text-align: center;
+  font-size: medium;
+}
+
+.button-icon {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  padding-bottom: 16px;
+}
+
+.button-icon mat-icon {
+  height: 100%;
+  width: 100%;
+}

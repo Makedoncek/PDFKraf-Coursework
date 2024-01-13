@@ -1,0 +1,21 @@
+.text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.watermark-button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.watermark-button-box button {
+  width: 300px;
+  height: 64px;
+  margin-bottom: 50px;
+}
+
+.watermark-button-box mat-form-field {
+  margin-bottom: 28px;
+}
