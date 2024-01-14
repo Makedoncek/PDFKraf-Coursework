@@ -19,7 +19,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
-  margin: 10px 50px 10px 50px;
+  margin: 100px;
+  margin-top: 10%;
 }
 
 .button-text {

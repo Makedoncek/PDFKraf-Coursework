@@ -11,7 +11,7 @@ export class HeaderComponent {
 constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
   this.matIconRegistry.addSvgIcon(
     'logo',
-    this.domSanitizer.bypassSecurityTrustResourceUrl('../../assets/compression.svg')
+    this.domSanitizer.bypassSecurityTrustResourceUrl('../../assets/merge.svg')
   )
 }
 

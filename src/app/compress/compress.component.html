@@ -1,4 +1,24 @@
-<div class="text-box">
-  <h1 class="text"> PDFKraf </h1>
-  <h4 class="text"> Transform Your PDFs: Merge, Compress and Customize with PDFKraf </h4>
+<div class="content-container">
+  <div class="text-box">
+    <h1 class="text"> PDF Compress </h1>
+    <h4 class="text"> Size matters: Compress Your Files, Expend Your Efficiency! </h4>
+  </div>
+
+  <div class="compress-button-box">
+    <input #fileInput accept="application/pdf" type="file" (change)="onFileSelection($event)" style="display: none"/>
+    <button mat-fab extended color="primary" (click)="triggerInput()">
+      Choose file
+    </button>
+
+    <h4 *ngIf="fileName">{{fileName}}</h4>
+    <button *ngIf="fileName" (click)="redirectToRickRoll()"></button>
+
+    <mat-slider max="2" showTickMarks [disabled]="disabled" showTickMarks discrete [displayWith]="formatLabel">
+      <input matSliderThumb>
+    </mat-slider>
+
+    <button mat-fab extended color="primary">
+      Compress
+    </button>
+  </div>
 </div>

@@ -16,6 +16,9 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { CompressComponent } from './compress/compress.component';
+import {MatSliderModule} from "@angular/material/slider";
+import { SplitComponent } from './split/split.component';
+import { MergeComponent } from './merge/merge.component';
 
 @NgModule({
   declarations: [
@@ -24,20 +27,23 @@ import { CompressComponent } from './compress/compress.component';
     NavigationComponent,
     FooterComponent,
     WatermarkComponent,
-    CompressComponent
+    CompressComponent,
+    SplitComponent,
+    MergeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    HttpClientModule,
-    MatInputModule,
-    FormsModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatIconModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        HttpClientModule,
+        MatInputModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatSliderModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
