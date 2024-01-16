@@ -1,7 +1,7 @@
 <div class="content-container">
   <div class="text-box">
-    <h1 class="text"> PDF split </h1>
-    <h4 class="text"> Divide and Conquer: Seamlessly Split Your Documents for Ultimate Versatility </h4>
+    <h1 class="text"> PDF Split </h1>
+    <h4 class="text"> Divide And Conquer: Seamlessly Split Your Documents For Ultimate Versatility! </h4>
   </div>
 
   <div class="split-button-box">
@@ -11,7 +11,6 @@
     </button>
 
     <h4 *ngIf="fileName">{{fileName}}</h4>
-    <button *ngIf="fileName" (click)="redirectToRickRoll()"></button>
 
     <mat-slider *ngIf="MaxPages" [max]="MaxPages" [disabled]="disabled" discrete>
       <input matSliderStartThumb>

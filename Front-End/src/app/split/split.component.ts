@@ -48,8 +48,4 @@ export class SplitComponent {
   getPDFName() {
     this.fileName = this.selectedFile?.name
   }
-
-  redirectToRickRoll() {
-    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-  }
 }
