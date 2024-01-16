@@ -1,0 +1,23 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-button {
+  height: 64px;
+  width: auto;
+}
+
+logo-button {
+  width: 200px;
+  height: 200px;
+}
+
+.icon-button {
+  width: 20%;
+  height: 100%;
+}
+
+.button-icon mat-icon {
+  height: 100%;
+  width: 100%;
+}

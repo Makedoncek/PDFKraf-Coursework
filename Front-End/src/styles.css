@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.text {
+  font-family: Roboto, serif;
+}
+
+.content-container {
+  display: grid;
+  min-height: 90vh;
+  grid-template-rows: auto 1fr auto;
+}
