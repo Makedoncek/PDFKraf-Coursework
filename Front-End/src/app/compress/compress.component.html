@@ -11,7 +11,6 @@
     </button>
 
     <h4 *ngIf="fileName">{{fileName}}</h4>
-    <button *ngIf="fileName" (click)="redirectToRickRoll()"></button>
 
     <mat-slider max="2" showTickMarks [disabled]="disabled" showTickMarks discrete [displayWith]="formatLabel">
       <input matSliderThumb>

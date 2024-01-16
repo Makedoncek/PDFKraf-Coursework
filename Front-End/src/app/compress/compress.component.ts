@@ -50,19 +50,15 @@ export class CompressComponent {
     this.fileName = this.selectedFile?.name
   }
 
-  redirectToRickRoll() {
-    window.location.href = 'https://www.youtube.com/watch?v=HEyqytq0-is';
-
-  }
 
   formatLabel(value: number) {
     switch (value) {
       case 1:
-        return 'Loh';
+        return 'Recommended';
       case 2:
-        return 'Popusk';
+        return 'Extreme';
       default:
-        return 'Debich';
+        return 'Less';
     }
   }
 
