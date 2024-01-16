@@ -1,0 +1,20 @@
+<div class="content-container">
+  <div class="text-box">
+    <h1 class="text"> PDF merge </h1>
+    <h4 class="text">"Harmony in Umity: Merge Your Files for a Seamless Document Symphony!"</h4>
+  </div>
+
+  <div class="compress-button-box">
+    <input #fileInput accept="application/pdf" type="file" (change)="onFileSelection($event)" style="display: none"/>
+    <button mat-fab extended color="primary" (click)="triggerInput()">
+      Choose file
+    </button>
+    <div *ngFor="let fileName of fileNames">
+      <h4 *ngIf="fileName">{{fileName}}</h4>
+    </div>
+
+    <button mat-fab extended color="primary">
+      Compress
+    </button>
+  </div>
+</div>
