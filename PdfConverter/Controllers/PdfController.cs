@@ -79,7 +79,7 @@ namespace PdfConverter.Controllers;
         /// <param name="endPage">Ending page number.</param>
         /// <returns>Action result containing the extracted PDF.</returns>
         [HttpPost("split")]
-        public IActionResult SplitPdf(SplitPdfDto splitPdfDto)
+        public IActionResult SplitPdf([FromBody] SplitPdfDto splitPdfDto)
         {
            
             byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(splitPdfDto.PdfFile);
