@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PdfConverter.DTO;
 using PdfConverter.Service;
 namespace PdfConverter.Controllers;
 
@@ -78,13 +79,12 @@ namespace PdfConverter.Controllers;
         /// <param name="endPage">Ending page number.</param>
         /// <returns>Action result containing the extracted PDF.</returns>
         [HttpPost("split")]
-        public IActionResult SplitPdf(IFormFile pdfFile, int startPage, int endPage)
+        public IActionResult SplitPdf(SplitPdfDto splitPdfDto)
         {
            
-                byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(pdfFile);
-                byte[] extractedPdf = _pdfManipulationService.SplitPdf(pdfBytes, startPage, endPage);
+            byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(splitPdfDto.PdfFile);
+            byte[] extractedPdf = _pdfManipulationService.SplitPdf(pdfBytes, splitPdfDto.StartPage, splitPdfDto.EndPage);
 
-                return File(extractedPdf, "application/pdf", "extracted.pdf");
-                
+            return File(extractedPdf, "application/pdf", "extracted.pdf");  
         }
     }

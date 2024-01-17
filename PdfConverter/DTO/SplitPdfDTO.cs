@@ -1,8 +1,8 @@
 namespace PdfConverter.DTO;
 
-public class SplitPdfDTO
+public class SplitPdfDto
 {
-    public byte[] pdfBytes;
-    public int startPage;
-    public int endPage;
+    public IFormFile PdfFile { get; set; }
+    public int StartPage { get; set; }
+    public int EndPage { get; set; }
 }
