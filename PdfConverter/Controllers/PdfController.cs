@@ -85,6 +85,6 @@ namespace PdfConverter.Controllers;
             byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(splitPdfDto.PdfFile);
             byte[] extractedPdf = _pdfManipulationService.SplitPdf(pdfBytes, splitPdfDto.StartPage, splitPdfDto.EndPage);
 
-            return File(extractedPdf, "application/pdf", "extracted.pdf");  
+            return Ok(File(extractedPdf, "application/pdf", "extracted.pdf"));  
         }
     }
