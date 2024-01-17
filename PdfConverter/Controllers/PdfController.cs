@@ -77,12 +77,12 @@ namespace PdfConverter.Controllers;
         /// <param name="startPage">Starting page number.</param>
         /// <param name="endPage">Ending page number.</param>
         /// <returns>Action result containing the extracted PDF.</returns>
-        [HttpPost("extract")]
-        public IActionResult ExtractPagesFromPdf(IFormFile pdfFile, int startPage, int endPage)
+        [HttpPost("split")]
+        public IActionResult SplitPdf(IFormFile pdfFile, int startPage, int endPage)
         {
            
                 byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(pdfFile);
-                byte[] extractedPdf = _pdfManipulationService.ExtractPagesFromPdf(pdfBytes, startPage, endPage);
+                byte[] extractedPdf = _pdfManipulationService.SplitPdf(pdfBytes, startPage, endPage);
 
                 return File(extractedPdf, "application/pdf", "extracted.pdf");
                 

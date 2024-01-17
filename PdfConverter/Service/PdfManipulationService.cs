@@ -147,7 +147,7 @@ public class PdfManipulationService
     /// <param name="startPage">Starting page number.</param>
     /// <param name="endPage">Ending page number.</param>
     /// <returns>Extracted PDF byte array.</returns>
-    public byte[] ExtractPagesFromPdf(byte[] pdfBytes, int startPage, int endPage)
+    public byte[] SplitPdf(byte[] pdfBytes, int startPage, int endPage)
     {
         ValidatePageRange(startPage, endPage);
 
