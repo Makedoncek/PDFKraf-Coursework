@@ -26,6 +26,7 @@
             "outputPath": "dist/pdfkraf",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "proxyConfig": "proxy.config.json",
             "polyfills": [
               "zone.js"
             ],

@@ -18,7 +18,7 @@ export class PdfConvertorService {
   }
 
   public postSplitRequest(splitRequest: SplitRequest){
-    return this.http.post<FileResponse>("api/pdf/split", splitRequest).pipe(map(this.convertFile))
+    return this.http.post<FileResponse>("pdf/split", splitRequest).pipe(map(this.convertFile))
   }
 
 }
