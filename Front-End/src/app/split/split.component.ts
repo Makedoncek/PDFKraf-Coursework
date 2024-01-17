@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import { PDFDocument } from 'pdf-lib';
+import {PdfConvertorService} from "../pdf-convertor.service";
 
 @Component({
   selector: 'app-split',
@@ -8,10 +9,15 @@ import { PDFDocument } from 'pdf-lib';
 })
 export class SplitComponent {
   @ViewChild('fileInput') fileInput!: ElementRef;
-  disabled = false;
   MaxPages: number | undefined;
   selectedFile: File | undefined;
   fileName: String | undefined;
+  from = 0;
+  to = 0;
+  result: File | undefined
+
+  constructor(private service: PdfConvertorService) {
+  }
 
   triggerInput() {
     this.fileInput.nativeElement.click();
@@ -48,4 +54,19 @@ export class SplitComponent {
   getPDFName() {
     this.fileName = this.selectedFile?.name
   }
+
+  SendSplitRequest(){
+    if (this.selectedFile)
+       this.service.postSplitRequest(this.service.convertToRequest(this.selectedFile,this.from, this.to )).subscribe(file  => {this.result = file})
+  }
+
+  downloadFile() {
+    const blob = new Blob([this.result!], { type: this.result!.type });
+
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = this.result!.name;
+    link.click();
+  }
+
 }
