@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {PDFDocument} from "pdf-lib";
+import {PdfWatermarkService} from "../services/pdf-watermark.service";
 
 @Component({
   selector: 'app-watermark',
@@ -7,10 +8,15 @@ import {PDFDocument} from "pdf-lib";
   styleUrl: './watermark.component.css'
 })
 export class WatermarkComponent {
+
+  constructor(private service: PdfWatermarkService) {
+  }
+
   @ViewChild('fileInput') fileInput!: ElementRef;
-  value = '';
+  watermarkText = '';
   selectedFile: File | undefined;
   fileName: String | undefined;
+  result: File | undefined;
 
   triggerInput() {
     this.fileInput.nativeElement.click();
@@ -32,8 +38,7 @@ export class WatermarkComponent {
 
         try {
           const pdfDoc = await PDFDocument.load(pdfBytes);
-        }
-        catch (error) {
+        } catch (error) {
           this.fileName = "Wrong ABOBAS please help me, I am drowning under the wotar"
         }
       };
@@ -44,5 +49,18 @@ export class WatermarkComponent {
 
   getPDFName() {
     this.fileName = this.selectedFile?.name
+  }
+
+  SendWatermarkRequest(){
+    if (this.selectedFile)
+      this.service.postWatermarkRequest(this.selectedFile, this.watermarkText).subscribe( it => {this.result = it})
+  }
+
+
+  downloadFile() {
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(this.result!);
+    link.download = "watermarked.pdf";
+    link.click();
   }
 }

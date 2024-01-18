@@ -21,7 +21,7 @@
       Split
     </button>
 
-    <button *ngIf="selectedFile" (click)="downloadFile()">
+    <button mat-fab extended *ngIf="result" (click)="downloadFile()">
       download
     </button>
 
