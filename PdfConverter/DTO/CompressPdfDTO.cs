@@ -2,6 +2,6 @@ namespace PdfConverter.DTO;
 
 public class CompressPdfDTO
 {
-    public byte[] pdfBytes;
-    public int compressionlevel;
+   public IFormFile pdfFile { get; set; }
+   public int compressionLevel { get; set; }
 }

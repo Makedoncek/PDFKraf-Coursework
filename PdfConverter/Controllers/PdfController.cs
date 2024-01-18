@@ -87,4 +87,10 @@ namespace PdfConverter.Controllers;
 
             return Ok(File(extractedPdf, "application/pdf", "extracted.pdf"));  
         }
+        [HttpGet("test")]
+        public ActionResult<int> Get()
+        {
+            Console.WriteLine();
+            return 1;
+        }
     }

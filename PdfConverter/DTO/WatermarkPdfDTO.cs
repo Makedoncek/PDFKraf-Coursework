@@ -2,7 +2,7 @@ namespace PdfConverter.DTO;
 
 public class WatermarkPdfDTO
 {
-    public byte[] pdfBytes;
-    public string watermarkText;
-    
+   public IFormFile pdfFile { get; set; }
+   public string watermarkText { get; set; }
+
 }
