@@ -74,7 +74,8 @@
               "buildTarget": "PDFkraf:build:development"
             },
             "options": {
-              "proxyConfig": "proxy.config.json"
+              "browserTarget": "PDFkraf:build",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

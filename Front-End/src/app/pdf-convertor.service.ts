@@ -10,29 +10,41 @@ export class PdfConvertorService {
   constructor(private http: HttpClient) { }
 
   public convertToRequest(file: File, from: number, to: number){
-    return new SplitRequest(file, from, to)
+    return new SplitPdfDTO(file, from, to)
   }
 
-  private convertFile(fileDTO: FileResponse){
-    return fileDTO.pdfFile
+
+
+  public postSplitRequest(splitRequest: SplitPdfDTO) {
+    const formData = new FormData();
+    formData.append('pdfFile', splitRequest.pdfFile);
+    formData.append('startPage', splitRequest.startPage.toString());
+    formData.append('endPage', splitRequest.endPage.toString());
+
+    return this.http.post<Blob>("https://localhost:7242/api/pdf/split", formData, { responseType: 'blob' as 'json' })
+      .pipe(map(blob => {
+        return new File([blob], "split.pdf", { type: 'application/pdf' })
+      }));
   }
 
-  public postSplitRequest(splitRequest: SplitRequest){
-    return this.http.post<FileResponse>("pdf/split", splitRequest).pipe(map(this.convertFile))
-  }
+
 
 }
 
-export class SplitRequest {
+export class SplitPdfDTO {
   pdfFile: File
-  from: number
-  to: number
+  startPage: number
+  endPage: number
   constructor(pdfFile: File, from: number, to: number) {
     this.pdfFile = pdfFile
-    this.from = from
-    this.to = to
+    this.startPage = from
+    this.endPage = to
   }
 }
+
+
+
+
 
 export interface FileResponse {
   pdfFile: File

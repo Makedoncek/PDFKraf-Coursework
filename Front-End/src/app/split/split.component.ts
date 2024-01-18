@@ -12,8 +12,8 @@ export class SplitComponent {
   MaxPages: number | undefined;
   selectedFile: File | undefined;
   fileName: String | undefined;
-  from = 0;
-  to = 0;
+  from = 1;
+  to = 1;
   result: File | undefined
 
   constructor(private service: PdfConvertorService) {
