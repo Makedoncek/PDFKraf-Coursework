@@ -59,8 +59,9 @@ public class PdfManipulationService
     /// <param name="pdfBytes">Input PDF byte array.</param>
     /// <param name="watermarkText">Text for the watermark.</param>
     /// <returns>PDF byte array with watermark added.</returns>
-    public byte[] WatermarkPdf(byte[] pdfBytes, string watermarkText)
+    public byte[] WatermarkPdf(WatermarkPdfDTO watermarkPdfDto)
     {
+        byte[] pdfBytes = ConvertToByteArray(watermarkPdfDto.pdfFile);
         MemoryStream inputStream = new MemoryStream(pdfBytes);
         MemoryStream outputStream = new MemoryStream();
         try
@@ -69,7 +70,7 @@ public class PdfManipulationService
             using (PdfWriter pdfWriter = new PdfWriter(outputStream))
             using (PdfDocument pdfDocument = new PdfDocument(pdfReader, pdfWriter))
             {
-                AddWatermarkToPdf(pdfDocument, watermarkText);
+                AddWatermarkToPdf(pdfDocument, watermarkPdfDto.watermarkText);
             }
             return outputStream.ToArray();
         }
@@ -151,9 +152,10 @@ public class PdfManipulationService
     /// <param name="startPage">Starting page number.</param>
     /// <param name="endPage">Ending page number.</param>
     /// <returns>Extracted PDF byte array.</returns>
-    public byte[] SplitPdf(byte[] pdfBytes, int startPage, int endPage)
+    public byte[] SplitPdf(SplitPdfDto splitPdfDto)
     {
-        ValidatePageRange(startPage, endPage);
+        byte[] pdfBytes = ConvertToByteArray(splitPdfDto.pdfFile);
+        ValidatePageRange(splitPdfDto.startPage, splitPdfDto.endPage);
 
         MemoryStream pdfStream = new MemoryStream(pdfBytes);
         MemoryStream extractedPdfStream = new MemoryStream();
@@ -164,7 +166,7 @@ public class PdfManipulationService
             using (PdfWriter writer = new PdfWriter(extractedPdfStream))
             using (PdfDocument extractedPdf = new PdfDocument(writer))
             {
-                for (int pageNum = startPage; pageNum <= Math.Min(endPage, pdfDocument.GetNumberOfPages()); pageNum++)
+                for (int pageNum = splitPdfDto.startPage; pageNum <= Math.Min(splitPdfDto.endPage, pdfDocument.GetNumberOfPages()); pageNum++)
                 {
                     extractedPdf.AddPage(pdfDocument.GetPage(pageNum).CopyTo(extractedPdf));
                 }

@@ -43,8 +43,7 @@ namespace PdfConverter.Controllers;
         [HttpPost("watermark")]
         public IActionResult WatermarkPdf([FromForm] WatermarkPdfDTO watermarkPdfDto)
         {
-            byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(watermarkPdfDto.pdfFile);
-            byte[] watermarkedPdf = _pdfManipulationService.WatermarkPdf(pdfBytes, watermarkPdfDto.watermarkText);
+            byte[] watermarkedPdf = _pdfManipulationService.WatermarkPdf(watermarkPdfDto);
             return File(watermarkedPdf, "application/pdf", "watermarked.pdf");
         }
 
@@ -73,10 +72,7 @@ namespace PdfConverter.Controllers;
         [HttpPost("split")]
         public IActionResult SplitPdf([FromForm] SplitPdfDto splitPdfDto)
         {
-            Console.WriteLine();
-            byte[] pdfBytes = _pdfManipulationService.ConvertToByteArray(splitPdfDto.pdfFile);
-            byte[] extractedPdf = _pdfManipulationService.SplitPdf(pdfBytes, splitPdfDto.startPage, splitPdfDto.endPage);
-
-            return File(extractedPdf, "application/pdf", "extracted.pdf");  
+            byte[] extractedPdf = _pdfManipulationService.SplitPdf(splitPdfDto);
+            return File(extractedPdf, "application/pdf", "splited.pdf");
         }
     }
