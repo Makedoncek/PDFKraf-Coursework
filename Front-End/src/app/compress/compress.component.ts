@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {PDFDocument} from "pdf-lib";
+import {PdfCompressService} from "../services/pdf-compress.service";
 
 @Component({
   selector: 'app-compress',
@@ -7,11 +8,15 @@ import {PDFDocument} from "pdf-lib";
   styleUrl: './compress.component.css'
 })
 export class CompressComponent {
-  disabled = true;
+
+  constructor(private service: PdfCompressService) {
+  }
+
   @ViewChild('fileInput') fileInput!: ElementRef;
-  MaxPages: number | undefined;
+  compressLevel = 1;
   selectedFile: File | undefined;
   fileName: String | undefined;
+  result: Blob | undefined;
 
   triggerInput() {
     this.fileInput.nativeElement.click();
@@ -22,7 +27,6 @@ export class CompressComponent {
 
     this.getNumPages()
     this.getPDFName()
-    this.disabled = false
   }
 
   private getNumPages() {
@@ -33,12 +37,10 @@ export class CompressComponent {
         const pdfBytes = e.target.result;
 
         try {
-          const pdfDoc = await PDFDocument.load(pdfBytes);
-          this.MaxPages = pdfDoc.getPageCount();
+          await PDFDocument.load(pdfBytes);
         }
         catch (error) {
           this.fileName = "Wrong ABOBAS please help me, I am drowning under the wotar"
-          this.MaxPages = undefined;
         }
       };
 
@@ -62,5 +64,16 @@ export class CompressComponent {
     }
   }
 
+  SendCompressRequest(){
+    if (this.selectedFile)
+    this.service.postCompressRequest(this.selectedFile, this.compressLevel!)
+  }
+
+  downloadFile() {
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(this.result!);
+    link.download = "compressed.pdf";
+    link.click();
+  }
 
 }

@@ -12,12 +12,16 @@
 
     <h4 *ngIf="fileName">{{fileName}}</h4>
 
-    <mat-slider max="2" showTickMarks [disabled]="disabled" showTickMarks discrete [displayWith]="formatLabel">
-      <input matSliderThumb>
+    <mat-slider *ngIf="selectedFile" max="2" showTickMarks showTickMarks discrete [displayWith]="formatLabel">
+      <input matSliderThumb [(ngModel)]="compressLevel">
     </mat-slider>
 
-    <button mat-fab extended color="primary">
+    <button mat-fab extended color="primary" (click)="SendCompressRequest()">
       Compress
+    </button>
+
+    <button mat-fab extended color="primary" (click)="downloadFile()">
+      Download
     </button>
   </div>
 </div>

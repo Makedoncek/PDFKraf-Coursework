@@ -16,7 +16,7 @@ export class WatermarkComponent {
   watermarkText = '';
   selectedFile: File | undefined;
   fileName: String | undefined;
-  result: File | undefined;
+  result: Blob | undefined;
 
   triggerInput() {
     this.fileInput.nativeElement.click();
@@ -53,7 +53,7 @@ export class WatermarkComponent {
 
   SendWatermarkRequest(){
     if (this.selectedFile)
-      this.service.postWatermarkRequest(this.selectedFile, this.watermarkText).subscribe( it => {this.result = it})
+      this.service.postWatermarkRequest(this.selectedFile, this.watermarkText).subscribe( blob => {this.result = blob})
   }
 
 

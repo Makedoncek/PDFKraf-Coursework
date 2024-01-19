@@ -5,12 +5,12 @@ import {map} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class PdfWatermarkService {
+export class PdfCompressService {
 
   constructor(private http: HttpClient) { }
 
-  public postWatermarkRequest(pdfFile: File, watermarkText: string) {
-    const formData = this.createWatermarkForm(pdfFile, watermarkText);
+  public postCompressRequest(pdfFile: File, compressLevel: number) {
+    const formData = this.createCompressForm(pdfFile, compressLevel);
 
     return this.http.post<Blob>("https://localhost:7242/api/pdf/watermark", formData, {responseType: 'blob' as 'json'})
       .pipe(
@@ -21,10 +21,10 @@ export class PdfWatermarkService {
       );
   }
 
-  private createWatermarkForm(pdfFile: File, watermarkText: string){
+  private createCompressForm(pdfFile: File, compressLevel: number){
     const formData = new FormData();
     formData.append('pdfFile', pdfFile);
-    formData.append('watermarkText', watermarkText);
+    formData.append('compressionLevel ', compressLevel.toString());
     return formData;
   }
 
