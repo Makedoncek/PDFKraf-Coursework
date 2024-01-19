@@ -132,13 +132,13 @@ public class PdfManipulationService
                 PdfWriter pdfWriter = new PdfWriter(outputStream);
                 switch (compressPdfDto.compressionLevel)
                 {
-                    case 1: // Light Compression
+                    case 0: // Light Compression
                         pdfWriter.SetCompressionLevel(CompressionConstants.DEFAULT_COMPRESSION);
                         break;
-                    case 2: // Strong Compression
+                    case 1: // Strong Compression
                         pdfWriter.SetCompressionLevel(CompressionConstants.BEST_COMPRESSION);
                         break;
-                    case 3: 
+                    case 2: 
                         pdfWriter.SetCompressionLevel(CompressionConstants.BEST_COMPRESSION);
                         break;
                     default:
