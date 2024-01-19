@@ -8,7 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BouncyCastle.NetCore" Version="2.2.1" />
 		<PackageReference Include="IronPdf" Version="2024.1.20" />
 		<PackageReference Include="itext7" Version="8.0.2" />
 		<PackageReference Include="iTextSharp" Version="5.5.13.3" />
@@ -23,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\PdfConverter.BLL\PdfConverter.BLL.csproj" />
+	  <ProjectReference Include="..\PdfConvertor.BLL\PdfConvertor.BLL.csproj" />
 	</ItemGroup>
 
 </Project>

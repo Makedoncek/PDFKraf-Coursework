@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfConverter", "PdfConverter\PdfConverter.csproj", "{6B06CBEB-B61B-4815-8776-31702EDE7AFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfConverter.BLL", "PdfConverter.BLL\PdfConverter.BLL.csproj", "{884B10A4-474F-4C06-BD21-B0A66A32CB60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfConvertor.BLL", "PdfConvertor.BLL\PdfConvertor.BLL.csproj", "{884B10A4-474F-4C06-BD21-B0A66A32CB60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
