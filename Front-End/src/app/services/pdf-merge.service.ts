@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
+import {SplitPdfDTO} from "./pdf-split.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ export class PdfMergeService {
   constructor(private http: HttpClient) { }
 
   public postMergeRequest(pdfFile: File[]) {
-
-    return this.http.post<Blob>("https://localhost:7242/api/pdf/merge", pdfFile, {responseType: 'blob' as 'json'})
+    const formData = this.createMergeForm(pdfFile);
+    return this.http.post<Blob>("https://localhost:7242/api/pdf/merge", formData, {responseType: 'blob' as 'json'})
       .pipe(
         map(blob => {
             return blob
@@ -20,4 +21,12 @@ export class PdfMergeService {
       );
   }
 
+  private createMergeForm(pdfFiles : File[]) {
+    const formData = new FormData();
+    for(let i = 0; i < pdfFiles.length; i++){
+      formData.append('pdfFiles', pdfFiles[i]);
+    }
+
+    return formData;
+  }
 }
