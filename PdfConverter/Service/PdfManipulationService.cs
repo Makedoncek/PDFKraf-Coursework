@@ -120,19 +120,37 @@ public class PdfManipulationService
     /// <param name="pdfBytes">Input PDF byte array.</param>
     /// <param name="compressionLevel">Compression level (from 0-9) 9 high compression 0 without.</param>
     /// <returns>Compressed PDF byte array.</returns>
-    public byte[] CompressPdf(byte[] pdfBytes, int compressionLevel)
+    public byte[] CompressPdf(CompressPdfDTO compressPdfDto)
     {
+        byte[] pdfBytes = ConvertToByteArray(compressPdfDto.pdfFile);
         MemoryStream inputStream = new MemoryStream(pdfBytes);
         MemoryStream outputStream = new MemoryStream();
         try
         {
             using (PdfReader pdfReader = new PdfReader(inputStream))
-            using (PdfWriter pdfWriter = new PdfWriter(outputStream).SetCompressionLevel(compressionLevel))
-            using (PdfDocument pdfDocument = new PdfDocument(pdfReader, pdfWriter))
             {
-                // Дополнительные операции по сжатию могут быть добавлены здесь
+                PdfWriter pdfWriter = new PdfWriter(outputStream);
+                switch (compressPdfDto.compressionLevel)
+                {
+                    case 1: // Light Compression
+                        pdfWriter.SetCompressionLevel(CompressionConstants.DEFAULT_COMPRESSION);
+                        break;
+                    case 2: // Strong Compression
+                        pdfWriter.SetCompressionLevel(CompressionConstants.BEST_COMPRESSION);
+                        break;
+                    case 3: 
+                        pdfWriter.SetCompressionLevel(CompressionConstants.BEST_COMPRESSION);
+                        break;
+                    default:
+                        throw new ArgumentException("Invalid compression level");
+                }
+
+                using (PdfDocument pdfDocument = new PdfDocument(pdfReader, pdfWriter))
+                {
+                    // Process the document as required
+                }
+                return outputStream.ToArray();
             }
-            return outputStream.ToArray();
         }
         catch (Exception ex)
         {
