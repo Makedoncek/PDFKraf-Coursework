@@ -58,7 +58,6 @@ namespace PdfConverter.Controllers;
         [HttpPost("compress")]
         public IActionResult CompressPdf([FromForm] CompressPdfDTO compressPdfDto)
         {
-            
             byte[] compressedPdf = _pdfManipulationService.CompressPdf(compressPdfDto);
             return File(compressedPdf, "application/pdf", "compressed.pdf");
         }
