@@ -13,7 +13,7 @@ namespace PdfConverter.Controllers;
         private readonly PdfManipulationService _pdfManipulationService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PdfController"/> class.
+    /// Initializes a new instance of the <see cref="PdfController"/> class.
         /// </summary>
         /// <param name="pdfManipulationService">Service for manipulating PDFs.</param>
         public PdfController(PdfManipulationService pdfManipulationService)
@@ -28,10 +28,10 @@ namespace PdfConverter.Controllers;
         [HttpPost("merge")]
         public IActionResult MergePdfs([FromForm]MergePdfDTO mergePdfDto)
         {
-             var pdfs = mergePdfDto.pdfFiles.Select(file => _pdfManipulationService.ConvertToByteArray(file)).ToList();
-             byte[] mergedPdf = _pdfManipulationService.MergePdfs(pdfs);
-             return  File(mergedPdf, "application/pdf", "merged.pdf");
+            byte[] mergedPdf = _pdfManipulationService.MergePdfs(mergePdfDto);
+            return File(mergedPdf, "application/pdf", "merged.pdf");
         }
+
 
         
         /// <summary>
@@ -78,11 +78,5 @@ namespace PdfConverter.Controllers;
             byte[] extractedPdf = _pdfManipulationService.SplitPdf(pdfBytes, splitPdfDto.startPage, splitPdfDto.endPage);
 
             return File(extractedPdf, "application/pdf", "extracted.pdf");  
-        }
-        [HttpGet("test")]
-        public ActionResult<int> Get()
-        {
-            Console.WriteLine();
-            return 1;
         }
     }

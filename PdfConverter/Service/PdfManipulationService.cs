@@ -7,6 +7,7 @@ using iText.Kernel.Pdf.Xobject;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using PdfConverter.DTO;
 
 namespace PdfConverter.Service;
 /// <summary>
@@ -19,8 +20,11 @@ public class PdfManipulationService
     /// </summary>
     /// <param name="pdfs">List of PDF byte arrays to be merged.</param>
     /// <returns>Merged PDF byte array.</returns>
-    public byte[] MergePdfs(List<byte[]> pdfs)
+    
+
+    public byte[] MergePdfs(MergePdfDTO mergePdfDto)
     {
+        var pdfs = mergePdfDto.pdfFiles.Select(file => ConvertToByteArray(file)).ToList();
         MemoryStream mergedPdfStream = new MemoryStream();
         using (PdfWriter writer = new PdfWriter(mergedPdfStream))
         using (PdfDocument mergedPdf = new PdfDocument(writer))
