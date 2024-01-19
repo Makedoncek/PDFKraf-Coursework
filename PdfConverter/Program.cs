@@ -1,5 +1,6 @@
 using PdfConverter.Service;
 using Iron.Pdf;
+using PdfConverter.BLL.Services.Interfaces;
 
 License.LicenseKey = "IRONSUITE.123456V64.GMAIL.COM.26614-2BAD8A1309-C55HP-QJVQPSIGSTPA-V5TB4Q64WGNB-HCYCZY57CSBP-JZN2R5BZ3XNW-36S5BWG7Z2IM-JJTA6GLFMDMW-O7FZMN-TBRWCVVAKS6LUA-DEPLOYMENT.TRIAL-3AFLMI.TRIAL.EXPIRES.18.FEB.2024";
 
@@ -7,7 +8,11 @@ License.LicenseKey = "IRONSUITE.123456V64.GMAIL.COM.26614-2BAD8A1309-C55HP-QJVQP
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<PdfManipulationService>();
+builder.Services.AddScoped<IPdfToBinaryConverter,PdfToBinaryConverter>();
+builder.Services.AddScoped<ICompressPdfService, CompressPdfService>();
+builder.Services.AddScoped<IMergePdfService, MergePdfService>();
+builder.Services.AddScoped<ISplitPdfService, SplitPdfService>();
+builder.Services.AddScoped<IWatermarkPdfService, WatermarkPdfService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
