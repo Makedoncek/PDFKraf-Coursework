@@ -66,7 +66,7 @@ export class CompressComponent {
 
   SendCompressRequest(){
     if (this.selectedFile)
-    this.service.postCompressRequest(this.selectedFile, this.compressLevel!)
+    this.service.postCompressRequest(this.selectedFile, this.compressLevel!).subscribe(blob => {this.result = blob})
   }
 
   downloadFile() {

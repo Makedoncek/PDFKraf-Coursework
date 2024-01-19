@@ -13,8 +13,12 @@
       <h4 *ngIf="fileName">{{fileName}}</h4>
     </div>
 
-    <button mat-fab extended color="primary">
+    <button *ngIf="selectedFiles.length > 1" mat-fab extended color="primary" (click)="sendMergeRequest()">
       Compress
+    </button>
+
+    <button *ngIf="result" mat-fab extended color="primary" (click)="downloadFile()">
+      Download
     </button>
   </div>
 </div>

@@ -20,7 +20,7 @@
       Compress
     </button>
 
-    <button mat-fab extended color="primary" (click)="downloadFile()">
+    <button *ngIf="result" mat-fab extended color="primary" (click)="downloadFile()">
       Download
     </button>
   </div>
