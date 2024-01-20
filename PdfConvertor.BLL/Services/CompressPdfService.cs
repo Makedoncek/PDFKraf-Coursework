@@ -12,7 +12,7 @@ public class CompressPdfService : ICompressPdfService
         _iPdfToBinaryConverter = iPdfToBinaryConverter;
     }
     
-    public byte[] CompressPdf(CompressPdfDTO compressPdfDto)
+    public byte[] CompressPdf(CompressPdfDto compressPdfDto)
     {
         int compressLevel = compressPdfDto.compressionLevel;
         byte[] pdfBytes = _iPdfToBinaryConverter.ConvertToByteArray(compressPdfDto.pdfFile);

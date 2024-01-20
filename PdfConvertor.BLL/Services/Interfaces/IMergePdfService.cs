@@ -4,5 +4,5 @@ namespace PdfConvertor.BLL.Services.Interfaces;
 
 public interface IMergePdfService
 {
-    public byte[] MergePdfs(MergePdfDTO mergePdfDto);
+    public byte[] MergePdfs(MergePdfDto mergePdfDto);
 }

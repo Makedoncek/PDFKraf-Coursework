@@ -17,7 +17,7 @@ namespace PdfConverter.Controllers
         }
 
         [HttpPost]
-        public IActionResult WatermarkPdf([FromForm] WatermarkPdfDTO watermarkPdfDto)
+        public IActionResult WatermarkPdf([FromForm] WatermarkPdfDto watermarkPdfDto)
         {
             byte[] watermarkedPdf = _iWatermarkPdfService.WatermarkPdf(watermarkPdfDto);
             return File(watermarkedPdf, "application/pdf", "watermarked.pdf");

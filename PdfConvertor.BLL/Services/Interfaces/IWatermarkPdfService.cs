@@ -4,5 +4,5 @@ namespace PdfConvertor.BLL.Services.Interfaces;
 
 public interface IWatermarkPdfService
 {
-    public byte[] WatermarkPdf(WatermarkPdfDTO watermarkPdfDto);
+    public byte[] WatermarkPdf(WatermarkPdfDto watermarkPdfDto);
 }

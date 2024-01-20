@@ -16,7 +16,7 @@ public class MergePdfService : IMergePdfService
         _iPdfToBinaryConverter = iPdfToBinaryConverter;
     }
     
-    public byte[] MergePdfs(MergePdfDTO mergePdfDto)
+    public byte[] MergePdfs(MergePdfDto mergePdfDto)
     {
         var pdfs = mergePdfDto.pdfFiles.Select(file => _iPdfToBinaryConverter.ConvertToByteArray(file)).ToList();
         MemoryStream mergedPdfStream = new MemoryStream();

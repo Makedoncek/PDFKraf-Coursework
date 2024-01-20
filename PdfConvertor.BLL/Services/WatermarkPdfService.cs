@@ -15,7 +15,7 @@ public class WatermarkPdfService : IWatermarkPdfService
     {
         _iPdfToBinaryConverter = iPdfToBinaryConverter;
     }
-     public byte[] WatermarkPdf(WatermarkPdfDTO watermarkPdfDto)
+     public byte[] WatermarkPdf(WatermarkPdfDto watermarkPdfDto)
     {
         byte[] pdfBytes = _iPdfToBinaryConverter.ConvertToByteArray(watermarkPdfDto.pdfFile);
         MemoryStream inputStream = new MemoryStream(pdfBytes);

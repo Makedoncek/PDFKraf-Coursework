@@ -17,7 +17,7 @@ namespace PdfConverter.Controllers
         }
 
         [HttpPost]
-        public IActionResult MergePdfs([FromForm]MergePdfDTO mergePdfDto)
+        public IActionResult MergePdfs([FromForm]MergePdfDto mergePdfDto)
         {
             byte[] mergedPdf = _iMergePdfService.MergePdfs(mergePdfDto);
             return File(mergedPdf, "application/pdf", "merged.pdf");

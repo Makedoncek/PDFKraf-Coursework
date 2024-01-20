@@ -4,6 +4,6 @@ namespace PdfConvertor.BLL.Services.Interfaces;
 
 public interface ICompressPdfService
 {
-    public byte[] CompressPdf(CompressPdfDTO compressPdfDto);
+    public byte[] CompressPdf(CompressPdfDto compressPdfDto);
     
 }
