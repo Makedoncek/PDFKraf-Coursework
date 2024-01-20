@@ -52,19 +52,19 @@ public class WatermarkPdfService : IWatermarkPdfService
             // Настройка параметров водяного знака
             float width = pageSize.GetWidth();
             float height = pageSize.GetHeight();
-            float watermarkWidth = width / 2;
-            float xOffSet = 100;
-            float yOffSet = -110;
+            float watermarkWidth = width / 1.3f;
+            float xOffSet = 250;
+            float yOffSet = -300;
             float x = (width - watermarkWidth) / 2 + xOffSet;
             float y = height / 2 + yOffSet;
 
-            // Создание водяного знака
+            
             Paragraph watermark = new Paragraph(watermarkText)
-                .SetFontColor(iText.Kernel.Colors.ColorConstants.RED, 0.2f) // 20% прозрачность
-                .SetFontSize(100)
+                .SetFontColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY, 0.2f) 
+                .SetFontSize(75)
                 .SetRotationAngle(Math.PI / 4);
 
-            // Добавление водяного знака на страницу
+            
             Canvas canvas = new Canvas(page, pageSize);
             canvas.Add(watermark.SetFixedPosition(x, y, watermarkWidth));
         }
