@@ -45,32 +45,31 @@ public class WatermarkPdfService : IWatermarkPdfService
      private void AddWatermarkToPdf(PdfDocument pdfDocument, string watermarkText)
      {
          int textLength = watermarkText.Length;
-
-         // Параметры для разных диапазонов символов
+         
          float fontSize, xOffSet, yOffSet;
          if (textLength <= 12)
          {
              fontSize = 85;
-             xOffSet = 200;
-             yOffSet = -210;
+             xOffSet = 150;
+             yOffSet = -180;
          }
          else if (textLength <= 25)
          {
              fontSize = 80;
-             xOffSet = 190;
-             yOffSet = -240;
+             xOffSet = 180;
+             yOffSet = -210;
          }
          else if (textLength <= 34)
          {
              fontSize = 75;
-             xOffSet = 220;
-             yOffSet = -270;
+             xOffSet = 210;
+             yOffSet = -240;
          }
          else
          {
              fontSize = 70;
              xOffSet = 250;
-             yOffSet = -300;
+             yOffSet = -270;
          }
 
          for (int i = 1; i <= pdfDocument.GetNumberOfPages(); i++)
@@ -80,7 +79,7 @@ public class WatermarkPdfService : IWatermarkPdfService
 
              float width = pageSize.GetWidth();
              float height = pageSize.GetHeight();
-             float watermarkWidth = width / 1.3f;  // Ваше вычисление для watermarkWidth
+             float watermarkWidth = width / 1.3f;  
              float x = (width - watermarkWidth) / 2 + xOffSet;
              float y = height / 2 + yOffSet;
 
