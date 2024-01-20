@@ -42,31 +42,58 @@ public class WatermarkPdfService : IWatermarkPdfService
         }
     }
 
-    private void AddWatermarkToPdf(PdfDocument pdfDocument, string watermarkText)
-    {
-        for (int i = 1; i <= pdfDocument.GetNumberOfPages(); i++)
-        {
-            PdfPage page = pdfDocument.GetPage(i);
-            iText.Kernel.Geom.Rectangle pageSize = page.GetPageSize();
+     private void AddWatermarkToPdf(PdfDocument pdfDocument, string watermarkText)
+     {
+         int textLength = watermarkText.Length;
 
-            // Настройка параметров водяного знака
-            float width = pageSize.GetWidth();
-            float height = pageSize.GetHeight();
-            float watermarkWidth = width / 1.3f;
-            float xOffSet = 250;
-            float yOffSet = -300;
-            float x = (width - watermarkWidth) / 2 + xOffSet;
-            float y = height / 2 + yOffSet;
+         // Параметры для разных диапазонов символов
+         float fontSize, xOffSet, yOffSet;
+         if (textLength <= 12)
+         {
+             fontSize = 85;
+             xOffSet = 200;
+             yOffSet = -210;
+         }
+         else if (textLength <= 25)
+         {
+             fontSize = 80;
+             xOffSet = 190;
+             yOffSet = -240;
+         }
+         else if (textLength <= 34)
+         {
+             fontSize = 75;
+             xOffSet = 220;
+             yOffSet = -270;
+         }
+         else
+         {
+             fontSize = 70;
+             xOffSet = 250;
+             yOffSet = -300;
+         }
 
-            
-            Paragraph watermark = new Paragraph(watermarkText)
-                .SetFontColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY, 0.2f) 
-                .SetFontSize(75)
-                .SetRotationAngle(Math.PI / 4);
+         for (int i = 1; i <= pdfDocument.GetNumberOfPages(); i++)
+         {
+             PdfPage page = pdfDocument.GetPage(i);
+             iText.Kernel.Geom.Rectangle pageSize = page.GetPageSize();
 
-            
-            Canvas canvas = new Canvas(page, pageSize);
-            canvas.Add(watermark.SetFixedPosition(x, y, watermarkWidth));
-        }
-    }
+             float width = pageSize.GetWidth();
+             float height = pageSize.GetHeight();
+             float watermarkWidth = width / 1.3f;  // Ваше вычисление для watermarkWidth
+             float x = (width - watermarkWidth) / 2 + xOffSet;
+             float y = height / 2 + yOffSet;
+
+             Paragraph watermark = new Paragraph(watermarkText)
+                 .SetFontColor(iText.Kernel.Colors.ColorConstants.LIGHT_GRAY, 0.2f)
+                 .SetFontSize(fontSize)
+                 .SetRotationAngle(Math.PI / 4);
+
+             Canvas canvas = new Canvas(page, pageSize);
+             canvas.Add(watermark.SetFixedPosition(x, y, watermarkWidth));
+         }
+     }
+
+
+
 }
