@@ -1,9 +1,6 @@
-using PdfConverter.BLL.Services.Interfaces;
-using PdfConverter.DTO;
-using PdfConverter.Service;
-
-
 using Microsoft.AspNetCore.Mvc;
+using PdfConvertor.BLL.DTO;
+using PdfConvertor.BLL.Services.Interfaces;
 
 
 namespace PdfConverter.Controllers

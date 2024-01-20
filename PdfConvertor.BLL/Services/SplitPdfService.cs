@@ -1,10 +1,9 @@
 using iText.Kernel.Pdf;
-using Microsoft.AspNetCore.Http;
-using PdfConverter.BLL.Services.Interfaces;
-using PdfConverter.DTO;
+using PdfConvertor.BLL.DTO;
+using PdfConvertor.BLL.Services.Interfaces;
 using PdfDocument = iText.Kernel.Pdf.PdfDocument;
 
-namespace PdfConverter.Service;
+namespace PdfConvertor.BLL.Services;
 
 public class SplitPdfService : ISplitPdfService
 {

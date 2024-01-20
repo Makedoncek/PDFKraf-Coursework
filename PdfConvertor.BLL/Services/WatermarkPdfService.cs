@@ -1,11 +1,11 @@
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
-using PdfConverter.BLL.Services.Interfaces;
-using PdfConverter.DTO;
+using PdfConvertor.BLL.DTO;
+using PdfConvertor.BLL.Services.Interfaces;
 using PdfDocument = iText.Kernel.Pdf.PdfDocument;
 
-namespace PdfConverter.Service;
+namespace PdfConvertor.BLL.Services;
 
 public class WatermarkPdfService : IWatermarkPdfService
 {

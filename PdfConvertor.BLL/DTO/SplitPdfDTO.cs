@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace PdfConverter.DTO;
+namespace PdfConvertor.BLL.DTO;
 
 public class SplitPdfDto
 {

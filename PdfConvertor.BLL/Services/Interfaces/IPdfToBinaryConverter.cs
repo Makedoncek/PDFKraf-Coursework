@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace PdfConverter.BLL.Services.Interfaces;
+namespace PdfConvertor.BLL.Services.Interfaces;
 
 public interface IPdfToBinaryConverter
 {

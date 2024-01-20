@@ -1,7 +1,7 @@
-using PdfConverter.BLL.Services.Interfaces;
-using PdfConverter.DTO;
+using PdfConvertor.BLL.DTO;
+using PdfConvertor.BLL.Services.Interfaces;
 
-namespace PdfConverter.Service;
+namespace PdfConvertor.BLL.Services;
 
 public class CompressPdfService : ICompressPdfService
 {

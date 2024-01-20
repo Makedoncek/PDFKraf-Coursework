@@ -1,6 +1,6 @@
-using PdfConverter.DTO;
+using PdfConvertor.BLL.DTO;
 
-namespace PdfConverter.BLL.Services.Interfaces;
+namespace PdfConvertor.BLL.Services.Interfaces;
 
 public interface IWatermarkPdfService
 {

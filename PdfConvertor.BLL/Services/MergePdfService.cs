@@ -1,11 +1,11 @@
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Xobject;
 using iText.Layout;
-using PdfConverter.BLL.Services.Interfaces;
-using PdfConverter.DTO;
+using PdfConvertor.BLL.DTO;
+using PdfConvertor.BLL.Services.Interfaces;
 using PdfDocument = iText.Kernel.Pdf.PdfDocument;
 
-namespace PdfConvertor.BLL.Service;
+namespace PdfConvertor.BLL.Services;
 
 public class MergePdfService : IMergePdfService
 {

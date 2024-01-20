@@ -1,19 +1,7 @@
-using System.IO.Compression;
-using iText.Kernel.Geom;
-using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas;
-using iText.Kernel.Pdf.Extgstate;
-using iText.Kernel.Pdf.Xobject;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
 using Microsoft.AspNetCore.Http;
-using PdfConverter.BLL.Services.Interfaces;
-using PdfConverter.DTO;
-using IronPdfDoc = IronPdf.PdfDocument;
-using iTextPdfDoc = iText.Kernel.Pdf.PdfDocument; 
+using PdfConvertor.BLL.Services.Interfaces;
 
-namespace PdfConverter.Service;
+namespace PdfConvertor.BLL.Services;
 /// <summary>
 /// Service for manipulating PDF files.
 /// </summary>

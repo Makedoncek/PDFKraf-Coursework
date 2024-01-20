@@ -17,11 +17,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="DTO\" />
-	  <Folder Include="Service\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\PdfConvertor.BLL\PdfConvertor.BLL.csproj" />
 	</ItemGroup>
 
