@@ -42,6 +42,7 @@ export class CompressComponent {
         }
         catch (error) {
           this.fileName = "Invalid File Format: The uploaded file is not a PDF. Please ensure you are uploading a file with a '.pdf' extension and try again."
+          this.selectedFile = undefined;
         }
       };
 
