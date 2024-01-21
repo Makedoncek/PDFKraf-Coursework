@@ -12,7 +12,7 @@
 
     <h4 *ngIf="fileName">{{fileName}}</h4>
 
-    <mat-slider *ngIf="MaxPages" [max]="MaxPages" discrete>
+    <mat-slider *ngIf="MaxPages" [min]="1" [max]="MaxPages"  discrete>
       <input matSliderStartThumb [(ngModel)]="from">
       <input matSliderEndThumb [(ngModel)]="to">
     </mat-slider>
@@ -23,7 +23,7 @@
     </button>
 
     <button mat-fab extended color="primary" *ngIf="result" (click)="downloadFile()">
-      download
+      Download
     </button>
 
   </div>
