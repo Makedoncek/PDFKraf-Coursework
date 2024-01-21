@@ -45,7 +45,7 @@ export class SplitComponent {
             this.MaxPages = pdfDoc.getPageCount();
           }
           catch (error) {
-            this.fileName = "ERROR"
+            this.fileName = "Invalid File Format: The uploaded file is not a PDF. Please ensure you are uploading a file with a '.pdf' extension and try again."
             this.MaxPages = undefined;
           }
         };

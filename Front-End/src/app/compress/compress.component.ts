@@ -41,7 +41,7 @@ export class CompressComponent {
           await PDFDocument.load(pdfBytes);
         }
         catch (error) {
-          this.fileName = "ERROR"
+          this.fileName = "Invalid File Format: The uploaded file is not a PDF. Please ensure you are uploading a file with a '.pdf' extension and try again."
         }
       };
 

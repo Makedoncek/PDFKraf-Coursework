@@ -77,9 +77,7 @@ export class MergeComponent {
 
   private wipeData() {
     this.result = undefined
-    this.selectedFiles = [];
-    this.fileNames = undefined;
-    this.fileSize = 0;
+    
   }
 
   decideDisability(){
