@@ -13,12 +13,13 @@ export class CompressComponent {
   }
 
   @ViewChild('fileInput') fileInput!: ElementRef;
-  compressLevel = 1;
+  compressLevel: number = 1;
   selectedFile: File | undefined;
   fileName: String | undefined;
   result: Blob | undefined;
 
   triggerInput() {
+    this.wipeData()
     this.fileInput.nativeElement.click();
   }
 
@@ -40,7 +41,7 @@ export class CompressComponent {
           await PDFDocument.load(pdfBytes);
         }
         catch (error) {
-          this.fileName = "Wrong ABOBAS please help me, I am drowning under the wotar"
+          this.fileName = "ERROR"
         }
       };
 
@@ -65,15 +66,21 @@ export class CompressComponent {
   }
 
   SendCompressRequest(){
+    console.log(this.compressLevel)
     if (this.selectedFile)
-    this.service.postCompressRequest(this.selectedFile, this.compressLevel!).subscribe(blob => {this.result = blob})
+    this.service.postCompressRequest(this.selectedFile, this.compressLevel).subscribe(blob => {this.result = blob})
   }
 
   downloadFile() {
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(this.result!);
-    link.download = "compressed.pdf";
+    link.download =  "compressed_" + this.fileName;
     link.click();
+    this.wipeData()
   }
 
+  private wipeData() {
+    this.result = undefined
+    this.fileName = undefined
+  }
 }

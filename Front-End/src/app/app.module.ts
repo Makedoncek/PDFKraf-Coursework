@@ -13,12 +13,13 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {HttpClientModule} from "@angular/common/http";
 import { WatermarkComponent } from './watermark/watermark.component';
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, NgControl, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { CompressComponent } from './compress/compress.component';
 import {MatSliderModule} from "@angular/material/slider";
 import { SplitComponent } from './split/split.component';
 import { MergeComponent } from './merge/merge.component';
+import {FileSizePipe} from "./pipes/file-size.pipe";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MergeComponent } from './merge/merge.component';
     WatermarkComponent,
     CompressComponent,
     SplitComponent,
-    MergeComponent
+    MergeComponent,
+    FileSizePipe,
   ],
     imports: [
         BrowserModule,
@@ -42,7 +44,8 @@ import { MergeComponent } from './merge/merge.component';
         MatInputModule,
         FormsModule,
         BrowserAnimationsModule,
-        MatSliderModule
+        MatSliderModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

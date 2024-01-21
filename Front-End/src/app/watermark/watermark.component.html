@@ -12,12 +12,13 @@
 
     <h4 *ngIf="fileName">{{fileName}}</h4>
 
-    <mat-form-field class="example-form-field">
+    <mat-form-field *ngIf="fileName" class="example-form-field">
       <mat-label>Your watermark</mat-label>
-      <input matInput type="text" [(ngModel)]="watermarkText">
+      <input matInput type="text" maxlength="40" [(ngModel)]="watermarkText">
+      <mat-hint align="end">{{watermarkText?.length}} / 40</mat-hint>
     </mat-form-field>
 
-    <button mat-fab extended color="primary" (click)="SendWatermarkRequest()">
+    <button *ngIf="watermarkText" mat-fab extended color="primary" (click)="SendWatermarkRequest()">
       Watermark file
     </button >
 

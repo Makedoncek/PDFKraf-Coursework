@@ -7,6 +7,7 @@ import {PdfMergeService} from "../services/pdf-merge.service";
   templateUrl: './merge.component.html',
   styleUrl: './merge.component.css'
 })
+
 export class MergeComponent {
 
   constructor(private service: PdfMergeService) {
@@ -16,17 +17,23 @@ export class MergeComponent {
   selectedFiles: File[] = [];
   fileNames: String[] | undefined;
   result: Blob | undefined;
+  fileSize: number = 0;
 
   triggerInput() {
+    this.wipeData()
     this.fileInput.nativeElement.click();
   }
 
   onFileSelection(event: any) {
     this.selectedFiles?.push(...event.target.files);
-    console.log(this.selectedFiles)
 
     this.getNumPages()
     this.getPDFName()
+    this.getFilesSize();
+  }
+
+  private getFilesSize() {
+      this.fileSize += this.selectedFiles[this.selectedFiles.length - 1].size;
   }
 
   private getNumPages() {
@@ -40,7 +47,11 @@ export class MergeComponent {
           await PDFDocument.load(pdfBytes);
         }
         catch (error) {
-          this.fileNames?.push("Wrong ABOBAS please help me, I am drowning under the wotar")
+          this.fileNames?.push("ERROR")
+          this.selectedFiles = [];
+          this.fileNames = undefined;
+          this.fileSize = 0;
+
         }
       };
       reader.readAsArrayBuffer(this.selectedFiles[0]);
@@ -59,7 +70,20 @@ export class MergeComponent {
   downloadFile() {
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(this.result!);
-    link.download = "compressed.pdf";
+    link.download = "merge_" + this.fileNames![0];
     link.click();
+    this.wipeData()
   }
+
+  private wipeData() {
+    this.result = undefined
+    this.selectedFiles = [];
+    this.fileNames = undefined;
+    this.fileSize = 0;
+  }
+
+  decideDisability(){
+    return this.fileSize >= 27 * 1024 * 1024;
+  }
+
 }

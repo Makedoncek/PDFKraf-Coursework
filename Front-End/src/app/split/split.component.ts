@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import { PDFDocument } from 'pdf-lib';
 import {PdfSplitService} from "../services/pdf-split.service";
 
+
 @Component({
   selector: 'app-split',
   templateUrl: './split.component.html',
@@ -19,7 +20,9 @@ export class SplitComponent {
   constructor(private service: PdfSplitService) {
   }
 
+
   triggerInput() {
+    this.wipeData()
     this.fileInput.nativeElement.click();
   }
 
@@ -42,7 +45,7 @@ export class SplitComponent {
             this.MaxPages = pdfDoc.getPageCount();
           }
           catch (error) {
-            this.fileName = "Wrong ABOBAS please help me, I am drowning under the wotar"
+            this.fileName = "ERROR"
             this.MaxPages = undefined;
           }
         };
@@ -63,8 +66,17 @@ export class SplitComponent {
   downloadFile() {
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(this.result!);
-    link.download = "splited.pdf";
+    link.download = "splited_" + this.fileName;
     link.click();
+    this.wipeData()
+  }
+
+  private wipeData() {
+    this.result = undefined
+    this.fileName = undefined
+    this.MaxPages = undefined
+    this.to = 1
+    this.from = 1
   }
 
 }

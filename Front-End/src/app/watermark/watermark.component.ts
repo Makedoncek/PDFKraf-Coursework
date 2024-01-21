@@ -13,12 +13,13 @@ export class WatermarkComponent {
   }
 
   @ViewChild('fileInput') fileInput!: ElementRef;
-  watermarkText = '';
+  watermarkText: string | undefined;
   selectedFile: File | undefined;
   fileName: String | undefined;
   result: Blob | undefined;
 
   triggerInput() {
+    this.wipeData();
     this.fileInput.nativeElement.click();
   }
 
@@ -39,7 +40,7 @@ export class WatermarkComponent {
         try {
           const pdfDoc = await PDFDocument.load(pdfBytes);
         } catch (error) {
-          this.fileName = "Wrong ABOBAS please help me, I am drowning under the wotar"
+          this.fileName = "ERROR"
         }
       };
 
@@ -47,20 +48,27 @@ export class WatermarkComponent {
     }
   }
 
-  getPDFName() {
+  private getPDFName() {
     this.fileName = this.selectedFile?.name
   }
 
   SendWatermarkRequest(){
     if (this.selectedFile)
-      this.service.postWatermarkRequest(this.selectedFile, this.watermarkText).subscribe( blob => {this.result = blob})
+      this.service.postWatermarkRequest(this.selectedFile, this.watermarkText!).subscribe( blob => {this.result = blob})
   }
 
 
   downloadFile() {
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(this.result!);
-    link.download = "watermarked.pdf";
+    link.download = "watermarked_" + this.fileName;
     link.click();
+    this.wipeData()
+  }
+
+  private wipeData() {
+    this.result = undefined
+    this.fileName = undefined
+    this.watermarkText = undefined
   }
 }

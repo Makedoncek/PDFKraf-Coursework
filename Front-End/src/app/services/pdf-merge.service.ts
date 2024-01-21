@@ -9,15 +9,24 @@ export class PdfMergeService {
 
   constructor(private http: HttpClient) { }
 
-  public postMergeRequest(pdfFile: File[]) {
+  public postMergeRequest(pdfFiles: File[]) {
+    const formData = this.createMergeForm(pdfFiles)
 
-    return this.http.post<Blob>("https://localhost:7242/api/pdf/merge", pdfFile, {responseType: 'blob' as 'json'})
+    return this.http.post<Blob>("https://localhost:7242/api/pdf/merge", formData, {responseType: 'blob' as 'json'})
       .pipe(
         map(blob => {
             return blob
           }
         )
       );
+  }
+
+  private createMergeForm(pdfFiles: File[]) {
+    const formData = new FormData();
+    for (let i = 0; i < pdfFiles.length; i++) {
+      formData.append('files', pdfFiles[i]);
+    }
+    return formData;
   }
 
 }

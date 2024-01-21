@@ -12,16 +12,21 @@
 
     <h4 *ngIf="fileName">{{fileName}}</h4>
 
-    <mat-slider *ngIf="MaxPages" [max]="MaxPages" discrete>
-      <input matSliderStartThumb [(ngModel)]="from">
-      <input matSliderEndThumb [(ngModel)]="to">
-    </mat-slider>
+    <mat-form-field *ngIf="MaxPages">
+      <mat-label>From</mat-label>
+      <input matInput type="text" [(ngModel)]="from">
+    </mat-form-field>
+    <mat-form-field *ngIf="MaxPages">
+      <mat-label>To</mat-label>
+      <input  matInput type="text"  [(ngModel)]="to">
+    </mat-form-field>
 
-    <button mat-fab extended color="primary" (click)="SendSplitRequest()">
+
+    <button *ngIf="from != to" mat-fab extended color="primary" (click)="SendSplitRequest()">
       Split
     </button>
 
-    <button mat-fab extended *ngIf="result" (click)="downloadFile()">
+    <button mat-fab extended color="primary" *ngIf="result" (click)="downloadFile()">
       download
     </button>
 

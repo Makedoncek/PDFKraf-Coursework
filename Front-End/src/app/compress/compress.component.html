@@ -16,7 +16,7 @@
       <input matSliderThumb [(ngModel)]="compressLevel">
     </mat-slider>
 
-    <button mat-fab extended color="primary" (click)="SendCompressRequest()">
+    <button *ngIf="selectedFile" mat-fab extended color="primary" (click)="SendCompressRequest()">
       Compress
     </button>
 

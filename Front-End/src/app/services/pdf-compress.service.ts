@@ -10,7 +10,9 @@ export class PdfCompressService {
   constructor(private http: HttpClient) { }
 
   public postCompressRequest(pdfFile: File, compressLevel: number) {
+    console.log(compressLevel)
     const formData = this.createCompressForm(pdfFile, compressLevel);
+    console.log(formData.get("compressionLevel"))
 
     return this.http.post<Blob>("https://localhost:7242/api/pdf/watermark", formData, {responseType: 'blob' as 'json'})
       .pipe(
@@ -21,10 +23,10 @@ export class PdfCompressService {
       );
   }
 
-  private createCompressForm(pdfFile: File, compressLevel: number){
+  private createCompressForm(pdfFile: File, compressionLevel: number){
     const formData = new FormData();
     formData.append('pdfFile', pdfFile);
-    formData.append('compressionLevel ', compressLevel.toString());
+    formData.append('compressionLevel', compressionLevel.toString());
     return formData;
   }
 
