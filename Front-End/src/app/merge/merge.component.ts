@@ -77,11 +77,11 @@ export class MergeComponent {
 
   private wipeData() {
     this.result = undefined
-    
+
   }
 
   decideDisability(){
-    return this.fileSize >= 27 * 1024 * 1024;
+    return this.fileSize >= 28 * 1024 * 1024;
   }
 
 }

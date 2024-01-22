@@ -13,7 +13,7 @@
       <h4 *ngIf="fileName">{{fileName}}</h4>
     </div>
 
-    <mat-hint align="end">{{fileSize | toMegabytes}} / 27 MB</mat-hint>
+    <mat-hint align="end">{{fileSize | toMegabytes}} / 28 MB</mat-hint>
 
     <button *ngIf="selectedFiles.length > 1" [disabled]="decideDisability()" mat-fab extended color="primary" (click)="sendMergeRequest()">
       Merge
