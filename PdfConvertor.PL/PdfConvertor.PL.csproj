@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<RootNamespace>PdfConverter</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IronPdf" Version="2024.1.20" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.3.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PdfConvertor.BLL\PdfConvertor.BLL.csproj" />
+	</ItemGroup>
+
+</Project>

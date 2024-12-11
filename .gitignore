@@ -1,3 +1,8 @@
 /node_modules/
 /.idea/
 /.angular/
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
